@@ -11,13 +11,13 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { id: "hero", label: "Intro" },
-  { id: "metrics", label: "Outcomes" },
   { id: "what-i-do", label: "Thesis" },
   { id: "journey", label: "Journey" },
   { id: "spense", label: "Production" },
+  { id: "db-optimization", label: "Storage" },
+  { id: "impact", label: "Impact" },
   { id: "ai", label: "AI Systems" },
   { id: "aadhaar", label: "Projects" },
   { id: "skills", label: "Craft" },
-  { id: "philosophy", label: "Principles" },
   { id: "contact", label: "Contact" },
 ];

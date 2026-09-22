@@ -15,6 +15,7 @@ export function AnnamruthaProject() {
   return (
     <section
       id="annamrutha"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="Annamrutha project"
     >

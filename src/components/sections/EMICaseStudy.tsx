@@ -13,6 +13,7 @@ export function EMICaseStudy() {
   return (
     <section
       id="emi"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="EMI conversion case study"
     >

@@ -18,6 +18,7 @@ export function BIDashboard() {
   return (
     <section
       id="bi"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="Business intelligence dashboard case study"
     >

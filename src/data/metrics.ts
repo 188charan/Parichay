@@ -16,16 +16,22 @@ export interface Metric {
   separator?: boolean;
 }
 
+/**
+ * Hero metrics — the four strongest engineering outcomes, kept to four so the
+ * first screen stays scannable in ~20-30s. MTTD lives with the incident-
+ * response story; the 1,200+ DSA figure lives in the DSA section.
+ */
 export const metrics: Metric[] = [
   {
     value: 10,
     suffix: "K+",
-    label: "Live cardholders migrated",
+    label: "Live users migrated",
   },
   {
-    value: 0,
+    value: 45,
     prefix: "~",
-    label: "MTTD for critical production incidents",
+    suffix: "%",
+    label: "Avg. log payload reduction",
   },
   {
     value: 30,
@@ -37,10 +43,18 @@ export const metrics: Metric[] = [
     suffix: "%",
     label: "Faster partner onboarding",
   },
-  {
-    value: 1200,
-    suffix: "+",
-    separator: true,
-    label: "DSA problems solved",
-  },
+];
+
+/**
+ * Production Impact synthesis — a wider set shown as a visual summary after the
+ * Spense section. Compression figures are labeled as payload reduction, never
+ * as physical database-size reduction.
+ */
+export const productionImpact: Metric[] = [
+  { value: 10, suffix: "K+", label: "Live users migrated" },
+  { value: 45, prefix: "~", suffix: "%", label: "Average log payload reduction" },
+  { value: 58, suffix: "%", label: "Best-case payload reduction" },
+  { value: 30, suffix: "%", label: "API latency reduction" },
+  { value: 40, suffix: "%", label: "Partner onboarding improvement" },
+  { value: 0, prefix: "~", label: "Critical-event MTTD" },
 ];

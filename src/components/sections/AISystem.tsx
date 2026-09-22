@@ -37,6 +37,7 @@ export function AISystem() {
   return (
     <section
       id="ai"
+      data-tier="flagship"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="AI Dynamic Form Intelligence System"
     >

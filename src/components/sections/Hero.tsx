@@ -2,8 +2,11 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
-import { profile } from "@/data/profile";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { profile, contact } from "@/data/profile";
+import { metrics } from "@/data/metrics";
 import { easeOutExpo } from "@/lib/motionPresets";
+import { scrollToId } from "@/lib/lenisInstance";
 
 // Canvas is client-only and non-critical: load it after hydration so it never
 // blocks first paint or the headline animation.
@@ -21,6 +24,9 @@ const line = {
 };
 
 export function Hero() {
+  const resumeHref =
+    contact.links.find((l) => l.key === "resume")?.href || "/resume.pdf";
+
   return (
     <section
       id="hero"
@@ -96,6 +102,52 @@ export function Hero() {
         >
           {profile.tagline}
         </motion.p>
+
+        {/* CTAs — let recruiters act immediately */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.05, duration: 0.6, ease: easeOutExpo }}
+          className="mt-9 flex flex-wrap items-center gap-3"
+        >
+          <button
+            onClick={() => scrollToId("spense")}
+            className="group inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-soft)]"
+          >
+            View engineering work
+            <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
+          </button>
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-[var(--color-line-strong)] px-6 py-3 text-sm font-medium text-[var(--color-ink)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary-soft)]"
+          >
+            Resume
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+          </a>
+        </motion.div>
+
+        {/* Compact achievement strip — understood in seconds, no scroll needed */}
+        <motion.dl
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.25, duration: 0.6, ease: easeOutExpo }}
+          className="mt-12 flex flex-wrap gap-x-8 gap-y-4"
+        >
+          {metrics.map((m) => (
+            <div key={m.label} className="flex flex-col">
+              <dt className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)]">
+                {m.prefix}
+                {m.value}
+                {m.suffix}
+              </dt>
+              <dd className="mt-1 max-w-[9rem] text-xs leading-snug text-[var(--color-muted)]">
+                {m.label}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </div>
 
       {/* Scroll indicator */}

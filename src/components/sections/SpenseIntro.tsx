@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { spense, deliveryLifecycle } from "@/data/experience";
+import { spenseSystems } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tag } from "@/components/ui/Tag";
+import { scrollToId } from "@/lib/lenisInstance";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -27,7 +30,7 @@ export function SpenseIntro() {
 
       <div className="container-x relative">
         <SectionHeading
-          index="03"
+          index="04"
           label="Production fintech"
           lines={[spense.headline]}
           gradient
@@ -79,6 +82,43 @@ export function SpenseIntro() {
               </Tag>
             ))}
           </div>
+        </div>
+
+        {/* Production systems index — frames the case studies as one narrative */}
+        <div className="mt-20">
+          <div className="hairline mb-10" />
+          <h3 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--color-ink)] md:text-3xl">
+            Production systems I&rsquo;ve worked on
+          </h3>
+          <ul className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-4">
+            {spenseSystems.map((sys, i) => (
+              <motion.li
+                key={sys.target}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={inViewOnce}
+                transition={{ delay: i * 0.05, duration: 0.45, ease: easeOutExpo }}
+              >
+                <button
+                  onClick={() => scrollToId(sys.target)}
+                  className="group flex h-full w-full flex-col gap-3 bg-[var(--color-surface)] p-5 text-left transition-colors hover:bg-[var(--color-elevated)]"
+                >
+                  <span className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-[var(--color-primary)]">
+                      {sys.index}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-[var(--color-faint)] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--color-primary)]" aria-hidden />
+                  </span>
+                  <span className="font-[family-name:var(--font-display)] text-base font-semibold text-[var(--color-ink)]">
+                    {sys.label}
+                  </span>
+                  <span className="mt-auto font-mono text-[0.65rem] uppercase tracking-wider text-[var(--color-faint)]">
+                    {sys.theme}
+                  </span>
+                </button>
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

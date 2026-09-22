@@ -13,7 +13,8 @@ export const profile = {
   title: "Full Stack Developer",
   positioning: "Fintech × AI × Systems",
   location: "Bengaluru, India",
-  tagline: "Building production systems that move data, money, and decisions.",
+  tagline:
+    "Full Stack Developer building production fintech systems, AI workflows, and infrastructure that scale beyond the prototype.",
   intro:
     "Full Stack Developer building scalable fintech platforms, AI-powered systems, and production-grade engineering solutions.",
   experienceYears: "2+",

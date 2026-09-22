@@ -17,6 +17,7 @@ export function RBACPanel() {
   return (
     <section
       id="rbac"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="RBAC admin panel case study"
     >

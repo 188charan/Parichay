@@ -1,16 +1,18 @@
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { Hero } from "@/components/sections/Hero";
-import { Metrics } from "@/components/sections/Metrics";
 import { WhatIDo } from "@/components/sections/WhatIDo";
+import { SystemsOptimize } from "@/components/sections/SystemsOptimize";
 import { EngineeringJourney } from "@/components/sections/EngineeringJourney";
 import { SpenseIntro } from "@/components/sections/SpenseIntro";
 import { MigrationCaseStudy } from "@/components/sections/MigrationCaseStudy";
 import { IncidentResponse } from "@/components/sections/IncidentResponse";
+import { DatabaseOptimization } from "@/components/sections/DatabaseOptimization";
 import { PerformanceCaseStudy } from "@/components/sections/PerformanceCaseStudy";
 import { PartnerJourney } from "@/components/sections/PartnerJourney";
 import { EMICaseStudy } from "@/components/sections/EMICaseStudy";
 import { RBACPanel } from "@/components/sections/RBACPanel";
 import { BIDashboard } from "@/components/sections/BIDashboard";
+import { ProductionImpact } from "@/components/sections/ProductionImpact";
 import { Nokia } from "@/components/sections/Nokia";
 import { AISystem } from "@/components/sections/AISystem";
 import { AadhaarProject } from "@/components/sections/AadhaarProject";
@@ -28,18 +30,29 @@ export default function Home() {
     <SmoothScrollProvider>
       <ProgressRail />
       <main id="main">
+        {/* Level 1 & 2 — who I am + headline achievements (in the hero) */}
         <Hero />
-        <Metrics />
+
+        {/* Level 3 — how I engineer */}
         <WhatIDo />
+        <SystemsOptimize />
         <EngineeringJourney />
+
+        {/* Level 4 — Spense production systems, one narrative */}
         <SpenseIntro />
         <MigrationCaseStudy />
         <IncidentResponse />
+        <DatabaseOptimization />
         <PerformanceCaseStudy />
         <PartnerJourney />
         <EMICaseStudy />
         <RBACPanel />
         <BIDashboard />
+
+        {/* Synthesis */}
+        <ProductionImpact />
+
+        {/* Supporting story */}
         <Nokia />
         <AISystem />
         <AadhaarProject />

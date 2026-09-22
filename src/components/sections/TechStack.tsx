@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { skillCategories } from "@/data/skills";
+import { Database } from "lucide-react";
+import { skillCategories, mysqlDepth } from "@/data/skills";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
@@ -26,7 +27,44 @@ export function TechStack() {
       <div className="container-x">
         <SectionHeading index="12" label="Craft" lines={["THE STACK."]} />
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)]">
+        {/* Featured database depth — MySQL as a capability, not a tool pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={inViewOnce}
+          transition={{ duration: 0.6, ease: easeOutExpo }}
+          className="surface-card mt-14 flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-between"
+        >
+          <div className="flex items-center gap-4">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--color-line-strong)] bg-[rgba(79,140,255,0.06)] text-[var(--color-primary-soft)]">
+              <Database className="h-6 w-6" aria-hidden />
+            </span>
+            <div>
+              <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)]">
+                {mysqlDepth.name}
+              </h3>
+              <p className="font-mono text-xs uppercase tracking-wider text-[var(--color-faint)]">
+                database engineering
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {mysqlDepth.capabilities.map((c, i) => (
+              <motion.span
+                key={c}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={inViewOnce}
+                transition={{ delay: 0.2 + i * 0.06, duration: 0.4, ease: easeOutExpo }}
+                className="rounded-full border border-[var(--color-line-strong)] bg-[rgba(32,201,176,0.06)] px-4 py-2 text-sm text-[var(--color-teal-soft)]"
+              >
+                {c}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)]">
           {/* Category list */}
           <div
             className="flex flex-col"

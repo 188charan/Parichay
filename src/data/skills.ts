@@ -8,6 +8,21 @@ export interface SkillCategory {
   items: string[];
 }
 
+/**
+ * Featured database depth — MySQL is presented as a capability with real
+ * production dimensions, not just another tool pill.
+ */
+export const mysqlDepth = {
+  name: "MySQL",
+  capabilities: [
+    "Query Optimization",
+    "Indexing",
+    "Payload Compression",
+    "Storage Optimization",
+    "Production Logging",
+  ],
+};
+
 export const skillCategories: SkillCategory[] = [
   {
     id: "languages",

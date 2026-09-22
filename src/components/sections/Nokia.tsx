@@ -15,6 +15,7 @@ export function Nokia() {
   return (
     <section
       id="nokia"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="Nokia Networks experience"
     >

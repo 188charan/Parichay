@@ -16,6 +16,7 @@ export function AadhaarProject() {
   return (
     <section
       id="aadhaar"
+      data-tier="supporting"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="AI Aadhaar verification project"
     >

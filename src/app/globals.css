@@ -175,6 +175,19 @@ html.lenis body {
   padding-block: clamp(5rem, 12vh, 10rem);
 }
 
+/*
+  Visual hierarchy tiers — control how much breathing room a section commands.
+  FLAGSHIP sections get the most space (migration, DB optimization, AI);
+  SUPPORTING sections are more compact so pacing improves and the strongest
+  stories dominate.
+*/
+.section[data-tier="flagship"] {
+  padding-block: clamp(6rem, 16vh, 13rem);
+}
+.section[data-tier="supporting"] {
+  padding-block: clamp(3.5rem, 8vh, 6rem);
+}
+
 .container-x {
   width: 100%;
   max-width: 1200px;

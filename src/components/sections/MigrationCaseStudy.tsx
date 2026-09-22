@@ -16,6 +16,7 @@ export function MigrationCaseStudy() {
   return (
     <section
       id="migration"
+      data-tier="flagship"
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="VISA to RuPay migration case study"
     >

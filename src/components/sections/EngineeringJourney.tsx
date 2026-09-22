@@ -100,7 +100,7 @@ export function EngineeringJourney() {
           !reduced && "md:absolute md:top-12 md:left-0 md:right-0 md:z-10 md:pt-0",
         )}
       >
-        <SectionLabel index="02">Engineering journey</SectionLabel>
+        <SectionLabel index="03">Engineering journey</SectionLabel>
         <p className="mt-4 max-w-md text-sm text-[var(--color-muted)]">
           Education → Internship → Production Engineering.
         </p>
