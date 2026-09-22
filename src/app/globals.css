@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/*
+  PARICHAY — Design System
+  Premium Fintech Infrastructure × AI Laboratory × Cinematic Engineering
+  Dark midnight, blue primary, teal for flow/success states.
+*/
+
+@theme {
+  /* Surfaces */
+  --color-bg: #080b12;
+  --color-surface: #0d111a;
+  --color-elevated: #121824;
+
+  /* Text */
+  --color-ink: #f5f7fa;
+  --color-muted: #8b95a7;
+  --color-faint: #5a6478;
+
+  /* Accents */
+  --color-primary: #4f8cff;
+  --color-primary-soft: #7aa8ff;
+  --color-primary-dim: #2f5bb0;
+  --color-teal: #20c9b0;
+  --color-teal-soft: #55e0cc;
+
+  /* Signal colors (used sparingly) */
+  --color-warn: #f5a623;
+  --color-danger: #ff6b6b;
+
+  /* Borders — subtle white/blue transparency */
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(122, 168, 255, 0.22);
+
+  /* Typography */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Lenis handles smooth scroll; avoid double-smoothing */
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* Subtle vertical vignette so the midnight background has depth */
+  background-image: radial-gradient(
+    120% 80% at 50% -10%,
+    rgba(79, 140, 255, 0.06) 0%,
+    rgba(8, 11, 18, 0) 55%
+  );
+}
+
+/* When Lenis is active it sets html.lenis; keep native smooth off. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(79, 140, 255, 0.28);
+  color: var(--color-ink);
+}
+
+/* --- Scrollbar (subtle, technical) --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(122, 168, 255, 0.18);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 168, 255, 0.32);
+}
+
+/* --- Focus visibility (accessibility) --- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Reusable utility layers ---------- */
+@layer components {
+  /* Monospace engineering label, e.g. "01 / MIGRATION" */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Technical grid background layer */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(122, 168, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(122, 168, 255, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-line-strong),
+      transparent
+    );
+  }
+
+  /* Card surface with subtle elevation + border */
+  .surface-card {
+    background: linear-gradient(
+      180deg,
+      var(--color-elevated) 0%,
+      var(--color-surface) 100%
+    );
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+  }
+
+  /* Text gradient for accent headlines */
+  .text-gradient {
+    background: linear-gradient(
+      120deg,
+      var(--color-ink) 0%,
+      var(--color-primary-soft) 60%,
+      var(--color-teal-soft) 120%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Soft glow used behind hero / key numbers */
+  .glow-primary {
+    box-shadow: 0 0 80px -20px rgba(79, 140, 255, 0.5);
+  }
+}
+
+/* ---------- Section rhythm ---------- */
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 12vh, 10rem);
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
