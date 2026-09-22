@@ -5,6 +5,7 @@ import { partner } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
 import { Tag } from "@/components/ui/Tag";
+import { ConfigGraph } from "@/components/viz/ConfigGraph";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -55,6 +56,12 @@ export function PartnerJourney() {
             <p className="eyebrow mb-8 text-[var(--color-teal-soft)]">After — configuration-driven</p>
             <FlowDiagram nodes={partner.newFlow} orientation="vertical" />
           </motion.div>
+        </div>
+
+        {/* Configuration-driven distribution graph */}
+        <div className="surface-card mt-8 p-6 md:p-8">
+          <p className="eyebrow mb-6">One configuration engine, many tenant journeys</p>
+          <ConfigGraph className="mx-auto max-w-xl" />
         </div>
 
         {/* Result */}

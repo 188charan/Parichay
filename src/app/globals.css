@@ -195,6 +195,71 @@ html.lenis body {
   padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
+/* ==================================================================
+   LIVING SYSTEMS — shared ambient animation language
+   Lightweight, GPU-friendly CSS keyframes reused across sections.
+   All are paused unless their host has [data-active="true"], so
+   off-screen sections cost nothing.
+   ================================================================== */
+
+/* Gentle node breathing (opacity). */
+@keyframes viz-node-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+
+/* A pulse traveling along a connection (uses stroke-dashoffset). */
+@keyframes viz-dash-flow {
+  from { stroke-dashoffset: var(--viz-dash, 120); }
+  to { stroke-dashoffset: 0; }
+}
+
+/* A particle traveling along an offset-path (motion path). */
+@keyframes viz-travel {
+  from { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { offset-distance: 100%; opacity: 0; }
+}
+
+/* Slow drift for ambient particles. */
+@keyframes viz-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(var(--viz-dx, 6px), var(--viz-dy, -6px)); }
+}
+
+/* Signal sweep for latency tracks. */
+@keyframes viz-signal {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(400%); }
+}
+
+/* Particle falling down a pipeline (represents data/users moving through). */
+@keyframes viz-fall {
+  0% { transform: translateY(-8%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateY(108%); opacity: 0; }
+}
+
+/* Inward pulse traveling toward a convergence point (contact). */
+@keyframes viz-converge-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: var(--viz-dash, 40); }
+}
+
+/*
+  Animation is opt-in per host: elements using these keyframes start paused and
+  only run while their container is marked active (in view). This guarantees no
+  off-screen animation loops run simultaneously.
+*/
+[data-viz] {
+  animation-play-state: paused;
+}
+[data-active="true"] [data-viz] {
+  animation-play-state: running;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -204,5 +269,10 @@ html.lenis body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  /* Freeze all Living Systems motion entirely. */
+  [data-viz] {
+    animation: none !important;
+    offset-distance: 100% !important;
   }
 }

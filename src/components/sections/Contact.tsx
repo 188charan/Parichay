@@ -6,6 +6,7 @@ import { contact } from "@/data/profile";
 import { contactSection } from "@/data/philosophy";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
+import { ConvergenceLines } from "@/components/viz/ConvergenceLines";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
 
@@ -43,6 +44,9 @@ export function Contact() {
         style={{ background: "radial-gradient(circle, rgba(79,140,255,0.12), transparent 70%)" }}
         aria-hidden
       />
+
+      {/* Reverse of the hero: many connections converge to one identity */}
+      <ConvergenceLines className="opacity-60" />
 
       <div className="container-x relative">
         <SectionHeading index="16" label="Get in touch" lines={contactSection.headline} gradient />

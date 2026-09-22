@@ -31,6 +31,52 @@ engineer → **Level 4** deep case studies → synthesis → supporting story.
 
 ---
 
+## The "Living Systems" animation language
+
+The hero establishes the portfolio as a living technical system (a node network
+with data flowing through it). Every major section then *transforms* that same
+visual vocabulary to represent its own engineering concept — so the whole site
+feels like one connected system, not a page with decorations.
+
+Each animation answers "what engineering concept is this motion communicating?":
+
+| Section | Motion represents |
+| --- | --- |
+| Hero | the network (the foundation) |
+| What I Build | capability → system response (ambient network + hover glow) |
+| Systems I Optimize | transformation (data traveling before → after) |
+| Journey | a career signal traveling the timeline |
+| Migration | data/users moving through a production pipeline |
+| Incident | failure → alert propagation → resolved |
+| Database | compression (large payload converging into a smaller one) |
+| Performance | latency (a pulse traveling faster after optimization) |
+| Partner | a configuration graph distributing journeys to tenants |
+| EMI | a transaction pulse through the chain |
+| RBAC | an interactive permission graph |
+| BI | data flowing through the funnel |
+| AI | a parallel agent network converging on a validator |
+| DSA | a problem grid activating progressively |
+| Philosophy | the network converging into one stable core |
+| Contact | many connections converging back to one identity |
+
+Three intensity tiers keep it intentional, not noisy:
+
+- **Ambient** — very subtle background motion (e.g. the network behind "What I
+  Build").
+- **Contextual** — motion tied directly to the section's concept (latency,
+  transaction pulse, config graph, alert propagation).
+- **Signature** — the large moments: Migration, Database compression, AI, and
+  the Philosophy convergence.
+
+**How it stays fast:** almost everything is lightweight SVG + CSS keyframes
+(canvas is used only for the hero). Every animated element is paused unless its
+section is on-screen (an IntersectionObserver toggles it), so no off-screen
+loops run and multiple heavy loops never run at once. Geometry is deterministic
+and rounded, so server and client render identically. Under
+`prefers-reduced-motion`, all of it freezes to a clean static state.
+
+---
+
 ## 0. Hero — "Intro" (Levels 1 & 2)
 
 **What you see:** A full-screen opening designed so a recruiter understands you

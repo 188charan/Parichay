@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { incident } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
+import { AlertChain } from "@/components/viz/AlertChain";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -28,6 +29,11 @@ export function IncidentResponse() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
           {incident.summary}
         </p>
+
+        {/* Alert propagation visualization */}
+        <div className="surface-card mt-12 p-6 md:p-8">
+          <AlertChain className="mx-auto max-w-2xl" />
+        </div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {/* Tier 1 */}

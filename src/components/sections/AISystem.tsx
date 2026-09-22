@@ -21,6 +21,7 @@ import {
 } from "@/data/aiSystem";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
+import { AgentNetwork } from "@/components/viz/AgentNetwork";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
 
@@ -78,6 +79,12 @@ export function AISystem() {
         {/* Four-agent architecture */}
         <div className="mt-24">
           <p className="eyebrow mb-8">Four-agent architecture — parallel where appropriate</p>
+
+          {/* Signature: live agent data-flow network */}
+          <div className="surface-card mb-8 p-6 md:p-8">
+            <AgentNetwork className="mx-auto max-w-2xl" />
+          </div>
+
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {agents.map((agent, i) => {
               const Icon = agentIcons[i] ?? FileText;

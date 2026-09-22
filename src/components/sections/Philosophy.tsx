@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { philosophy, narrativeClose } from "@/data/philosophy";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ConvergenceField } from "@/components/viz/ConvergenceField";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -17,7 +18,9 @@ export function Philosophy() {
       className="section relative overflow-hidden border-t border-[var(--color-line)]"
       aria-label="Engineering philosophy"
     >
-      <div className="container-x">
+      <ConvergenceField />
+
+      <div className="container-x relative">
         <SectionLabel index="14">Principles</SectionLabel>
 
         <ul className="mt-16 flex flex-col">

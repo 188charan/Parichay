@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { systemsFromTo } from "@/data/whatIDo";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SignalTrack } from "@/components/viz/SignalTrack";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -68,8 +69,10 @@ function Row({ from, to, delay }: { from: string; to: string; delay: number }) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={inViewOnce}
         transition={{ delay: delay + 0.15, duration: 0.4 }}
-        className="flex items-center justify-center py-1 md:col-start-2 md:py-4"
+        className="flex items-center justify-center gap-2 py-1 md:col-start-2 md:py-4"
       >
+        {/* data traveling across the transformation */}
+        <SignalTrack speed={1.8} tone="teal" className="hidden w-10 md:block" />
         <ArrowRight className="h-5 w-5 rotate-90 text-[var(--color-primary)] md:rotate-0" aria-hidden />
       </motion.div>
 

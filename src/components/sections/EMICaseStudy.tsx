@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { emi } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SignalTrack } from "@/components/viz/SignalTrack";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -60,6 +61,14 @@ export function EMICaseStudy() {
                 )}
               </div>
             ))}
+          </div>
+
+          {/* transaction pulse traveling through the chain */}
+          <div className="mt-6 flex items-center gap-3">
+            <span className="font-mono text-[0.6rem] uppercase tracking-wider text-[var(--color-faint)]">
+              txn
+            </span>
+            <SignalTrack speed={2} pulses={2} tone="teal" className="flex-1" />
           </div>
         </div>
 

@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { migration } from "@/data/caseStudies";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
+import { PipelineStream } from "@/components/viz/PipelineStream";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -82,11 +83,14 @@ export function MigrationCaseStudy() {
             <CoordinationTriangle parties={migration.coordination} />
           </div>
 
-          {/* Right: the animated pipeline */}
+          {/* Right: the animated pipeline with representative data flowing through */}
           <div>
             <p className="eyebrow mb-6">Fault-tolerant migration pipeline</p>
-            <div className="surface-card p-6 md:p-8">
-              <FlowDiagram nodes={migration.workflow} orientation="vertical" />
+            <div className="surface-card relative overflow-hidden p-6 md:p-8">
+              <PipelineStream count={40} />
+              <div className="relative">
+                <FlowDiagram nodes={migration.workflow} orientation="vertical" />
+              </div>
             </div>
           </div>
         </div>

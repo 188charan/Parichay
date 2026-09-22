@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { biDashboard } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tag } from "@/components/ui/Tag";
+import { useVizActive } from "@/lib/useVizActive";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 // Relative funnel proportions — conceptual only, no fabricated absolute values.
@@ -15,6 +16,7 @@ const funnelWidths = [100, 68, 42];
  * conceptual visualization only (no invented business numbers).
  */
 export function BIDashboard() {
+  const { ref: vizRef, active } = useVizActive<HTMLDivElement>();
   return (
     <section
       id="bi"
@@ -33,6 +35,8 @@ export function BIDashboard() {
         <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           {/* Dashboard mock */}
           <motion.div
+            ref={vizRef}
+            data-active={active}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={inViewOnce}
@@ -74,12 +78,23 @@ export function BIDashboard() {
                         whileInView={{ width: `${funnelWidths[i]}%` }}
                         viewport={inViewOnce}
                         transition={{ delay: 0.2 + i * 0.15, duration: 0.9, ease: easeOutExpo }}
-                        className="h-full rounded-lg"
+                        className="relative h-full overflow-hidden rounded-lg"
                         style={{
                           background:
                             "linear-gradient(90deg, var(--color-primary), var(--color-teal))",
                         }}
-                      />
+                      >
+                        {/* data flowing through this funnel stage */}
+                        <span
+                          data-viz=""
+                          className="absolute inset-y-0 left-0 w-1/3"
+                          style={{
+                            background:
+                              "linear-gradient(90deg, transparent, rgba(245,247,250,0.35), transparent)",
+                            animation: `viz-signal ${2 + i * 0.4}s linear ${i * 0.3}s infinite`,
+                          }}
+                        />
+                      </motion.div>
                     </div>
                   </div>
                 ))}

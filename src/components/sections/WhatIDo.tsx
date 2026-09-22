@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { whatIDoHeadline, whatIDoStatements } from "@/data/whatIDo";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { AmbientNetwork } from "@/components/viz/AmbientNetwork";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
 
@@ -29,7 +30,10 @@ export function WhatIDo() {
       className="section relative overflow-hidden"
       aria-label="What I build"
     >
-      <div className="container-x">
+      {/* Ambient system network behind the capabilities */}
+      <AmbientNetwork nodeCount={22} seed={13} className="opacity-50" intensity={0.5} />
+
+      <div className="container-x relative">
         <SectionLabel index="01">Thesis</SectionLabel>
 
         <motion.h2
@@ -49,7 +53,8 @@ export function WhatIDo() {
               transition={{ delay: i * 0.07, duration: 0.55, ease: easeOutExpo }}
               className={cn(
                 "group relative flex items-center gap-4 bg-[var(--color-surface)] px-6 py-8",
-                "transition-colors duration-300 hover:bg-[var(--color-elevated)]",
+                "transition-all duration-300 hover:bg-[var(--color-elevated)]",
+                "hover:shadow-[inset_0_0_0_1px_rgba(122,168,255,0.25),0_0_30px_-10px_rgba(79,140,255,0.5)]",
               )}
             >
               <span className="font-mono text-xs text-[var(--color-primary)]">

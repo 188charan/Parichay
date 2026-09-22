@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { journey, type JourneyStop } from "@/data/experience";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SignalTrack } from "@/components/viz/SignalTrack";
 import { gsap } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
@@ -104,6 +105,16 @@ export function EngineeringJourney() {
         <p className="mt-4 max-w-md text-sm text-[var(--color-muted)]">
           Education → Internship → Production Engineering.
         </p>
+        {/* Career signal traveling through the timeline */}
+        <div className="mt-6 flex max-w-md items-center gap-3">
+          <span className="font-mono text-[0.6rem] uppercase tracking-wider text-[var(--color-faint)]">
+            2021
+          </span>
+          <SignalTrack speed={3.2} tone="teal" className="flex-1" />
+          <span className="font-mono text-[0.6rem] uppercase tracking-wider text-[var(--color-faint)]">
+            now
+          </span>
+        </div>
       </div>
 
       {/* Desktop horizontal track / Mobile vertical stack */}

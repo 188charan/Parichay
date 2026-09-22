@@ -5,6 +5,7 @@ import { Database, HardDrive, ArrowDown } from "lucide-react";
 import { dbOptimization as db } from "@/data/caseStudies";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
+import { CompressionField } from "@/components/viz/CompressionField";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
 
@@ -84,6 +85,11 @@ export function DatabaseOptimization() {
             <span className="text-sm text-[var(--color-muted)]">{db.summary.ratioLabel}</span>
           </div>
         </motion.div>
+
+        {/* Signature compression visualization */}
+        <div className="mt-12">
+          <CompressionField />
+        </div>
 
         <p className="mt-8 max-w-3xl leading-relaxed text-[var(--color-muted)]">
           {db.problem}

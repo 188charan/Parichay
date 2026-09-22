@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { performance } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
+import { SignalTrack } from "@/components/viz/SignalTrack";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 
 /**
@@ -27,8 +28,11 @@ export function PerformanceCaseStudy() {
         />
 
         <div className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-center">
-          {/* Before / after bars */}
+          {/* Before / after bars + request→response latency signal */}
           <div className="flex flex-col gap-8">
+            <LatencyTrack label="Before" speed={2.8} tone="primary" />
+            <LatencyTrack label="After" speed={1.1} tone="teal" />
+            <div className="hairline" />
             <Bar label="Before" value={performance.before} max={100} tone="muted" delay={0.1} />
             <Bar label="After" value={performance.after} max={100} tone="teal" delay={0.35} />
             <p className="text-sm leading-relaxed text-[var(--color-faint)]">
@@ -46,6 +50,31 @@ export function PerformanceCaseStudy() {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Request → Response latency demo. The pulse traverses faster in the optimized
+ * ("After") state, communicating reduced latency without any millisecond claim.
+ */
+function LatencyTrack({
+  label,
+  speed,
+  tone,
+}: {
+  label: string;
+  speed: number;
+  tone: "primary" | "teal";
+}) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-14 font-mono text-xs uppercase tracking-widest text-[var(--color-muted)]">
+        {label}
+      </span>
+      <span className="font-mono text-[0.65rem] text-[var(--color-faint)]">req</span>
+      <SignalTrack speed={speed} tone={tone} className="flex-1" />
+      <span className="font-mono text-[0.65rem] text-[var(--color-faint)]">res</span>
+    </div>
   );
 }
 

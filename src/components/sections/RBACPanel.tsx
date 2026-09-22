@@ -1,19 +1,34 @@
 "use client";
 
+"use client";
+
+import { useState } from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Users, Building2, Lock } from "lucide-react";
+import { ShieldCheck, Users, Building2, Lock, Check, Minus } from "lucide-react";
 import { rbac } from "@/data/caseStudies";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tag } from "@/components/ui/Tag";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
+import { cn } from "@/lib/cn";
 
 const purposeIcons = [Building2, Users, Lock];
+
+/** Permission model driving the interactive matrix. */
+const PERMISSIONS = ["Read", "Write", "Delete", "Manage"] as const;
+const ROLES: { name: string; grants: boolean[] }[] = [
+  { name: "Admin", grants: [true, true, true, true] },
+  { name: "Operator", grants: [true, true, false, false] },
+  { name: "Viewer", grants: [true, false, false, false] },
+];
 
 /**
  * RBAC admin panel — rendered as a miniature admin dashboard inside the
  * portfolio, reinforcing "access should be designed, not assumed".
  */
 export function RBACPanel() {
+  // Which role row is currently focused (hover/tap). Default: Admin.
+  const [activeRole, setActiveRole] = useState(0);
+
   return (
     <section
       id="rbac"
@@ -91,35 +106,77 @@ export function RBACPanel() {
                 })}
               </div>
 
-              {/* permission matrix mock */}
+              {/* Interactive permission matrix — hover a role to see its
+                  grants illuminate; denied permissions stay muted. */}
               <div className="mt-6 overflow-hidden rounded-lg border border-[var(--color-line)]">
-                {["Admin", "Partner", "Support"].map((role, r) => (
-                  <div
-                    key={role}
-                    className="flex items-center justify-between border-b border-[var(--color-line)] px-4 py-3 last:border-b-0"
-                  >
-                    <span className="font-mono text-xs text-[var(--color-ink)]">{role}</span>
-                    <div className="flex gap-2">
-                      {[0, 1, 2, 3].map((c) => {
-                        // Deterministic granted/denied pattern per role.
-                        const granted = (r + c) % 3 !== 0;
-                        return (
+                {/* column header */}
+                <div className="flex items-center justify-between border-b border-[var(--color-line)] bg-[var(--color-bg)] px-4 py-2">
+                  <span className="font-mono text-[0.65rem] uppercase tracking-wider text-[var(--color-faint)]">
+                    role
+                  </span>
+                  <div className="flex gap-3">
+                    {PERMISSIONS.map((p) => (
+                      <span
+                        key={p}
+                        className="w-12 text-center font-mono text-[0.6rem] uppercase tracking-wide text-[var(--color-faint)]"
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {ROLES.map((role, r) => {
+                  const isActive = r === activeRole;
+                  return (
+                    <button
+                      key={role.name}
+                      type="button"
+                      onMouseEnter={() => setActiveRole(r)}
+                      onFocus={() => setActiveRole(r)}
+                      onClick={() => setActiveRole(r)}
+                      aria-pressed={isActive}
+                      className={cn(
+                        "flex w-full items-center justify-between border-b border-[var(--color-line)] px-4 py-3 text-left transition-colors last:border-b-0",
+                        isActive ? "bg-[rgba(79,140,255,0.06)]" : "hover:bg-[var(--color-elevated)]",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "font-mono text-xs transition-colors",
+                          isActive ? "text-[var(--color-ink)]" : "text-[var(--color-muted)]",
+                        )}
+                      >
+                        {role.name}
+                      </span>
+                      <div className="flex gap-3">
+                        {role.grants.map((granted, c) => (
                           <span
                             key={c}
-                            className="h-2.5 w-6 rounded-full"
-                            style={{
-                              background: granted
-                                ? "var(--color-teal)"
-                                : "rgba(139,149,167,0.2)",
-                            }}
-                            aria-hidden
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
+                            className={cn(
+                              "flex h-5 w-12 items-center justify-center rounded-full transition-all duration-300",
+                              granted
+                                ? isActive
+                                  ? "bg-[rgba(32,201,176,0.18)] text-[var(--color-teal-soft)]"
+                                  : "bg-[rgba(32,201,176,0.08)] text-[var(--color-teal)]"
+                                : "bg-[rgba(139,149,167,0.08)] text-[var(--color-faint)]",
+                            )}
+                          >
+                            {granted ? (
+                              <Check className="h-3 w-3" aria-hidden />
+                            ) : (
+                              <Minus className="h-3 w-3" aria-hidden />
+                            )}
+                          </span>
+                        ))}
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
+              <p className="mt-3 font-mono text-[0.65rem] text-[var(--color-faint)]">
+                Hover a role to inspect its permissions.
+              </p>
             </div>
           </motion.div>
         </div>
