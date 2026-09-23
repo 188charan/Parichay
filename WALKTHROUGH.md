@@ -55,6 +55,7 @@ Each animation answers "what engineering concept is this motion communicating?":
 | RBAC | an interactive permission graph |
 | BI | data flowing through the funnel |
 | AI | a parallel agent network converging on a validator |
+| From Complexity to Clarity | a black hole consuming problems, emitting optimized systems |
 | DSA | a problem grid activating progressively |
 | Philosophy | the network converging into one stable core |
 | Contact | many connections converging back to one identity |

@@ -13,6 +13,7 @@ import { EMICaseStudy } from "@/components/sections/EMICaseStudy";
 import { RBACPanel } from "@/components/sections/RBACPanel";
 import { BIDashboard } from "@/components/sections/BIDashboard";
 import { ProductionImpact } from "@/components/sections/ProductionImpact";
+import { SystemEvolution } from "@/components/sections/SystemEvolution";
 import { Nokia } from "@/components/sections/Nokia";
 import { AISystem } from "@/components/sections/AISystem";
 import { AadhaarProject } from "@/components/sections/AadhaarProject";
@@ -51,6 +52,9 @@ export default function Home() {
 
         {/* Synthesis */}
         <ProductionImpact />
+
+        {/* Signature: the optimization philosophy, cinematic */}
+        <SystemEvolution />
 
         {/* Supporting story */}
         <Nokia />

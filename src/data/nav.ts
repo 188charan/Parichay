@@ -16,6 +16,7 @@ export const navItems: NavItem[] = [
   { id: "spense", label: "Production" },
   { id: "db-optimization", label: "Storage" },
   { id: "impact", label: "Impact" },
+  { id: "evolution", label: "Evolution" },
   { id: "ai", label: "AI Systems" },
   { id: "aadhaar", label: "Projects" },
   { id: "skills", label: "Craft" },
