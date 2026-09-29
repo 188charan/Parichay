@@ -18,6 +18,12 @@ export const profile = {
   intro:
     "Full Stack Developer building scalable fintech platforms, AI-powered systems, and production-grade engineering solutions.",
   experienceYears: "2+",
+  /**
+   * Avatar sticker shown in the Contact section. Drop your image at this path
+   * (public/assets/avatar/charan.png). Until it exists, a styled placeholder
+   * with your initials is shown automatically.
+   */
+  avatar: "/assets/avatar/charan.png",
 } as const;
 
 /**

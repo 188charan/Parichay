@@ -22,6 +22,8 @@ import { TechStack } from "@/components/sections/TechStack";
 import { DSA } from "@/components/sections/DSA";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { About } from "@/components/sections/About";
+import { MacroPhotography } from "@/components/sections/MacroPhotography";
+import { Treks } from "@/components/sections/Treks";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { ProgressRail } from "@/components/layout/ProgressRail";
@@ -65,6 +67,11 @@ export default function Home() {
         <DSA />
         <Philosophy />
         <About />
+
+        {/* Beyond the code — personal passions */}
+        <MacroPhotography />
+        <Treks />
+
         <Contact />
       </main>
       <Footer />

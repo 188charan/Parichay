@@ -20,5 +20,7 @@ export const navItems: NavItem[] = [
   { id: "ai", label: "AI Systems" },
   { id: "aadhaar", label: "Projects" },
   { id: "skills", label: "Craft" },
+  { id: "macro", label: "Photography" },
+  { id: "treks", label: "Treks" },
   { id: "contact", label: "Contact" },
 ];

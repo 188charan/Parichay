@@ -7,6 +7,7 @@ import { contactSection } from "@/data/philosophy";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { ConvergenceLines } from "@/components/viz/ConvergenceLines";
+import { AvatarSticker } from "@/components/ui/AvatarSticker";
 import { inViewOnce, easeOutExpo } from "@/lib/motionPresets";
 import { cn } from "@/lib/cn";
 
@@ -49,17 +50,31 @@ export function Contact() {
       <ConvergenceLines className="opacity-60" />
 
       <div className="container-x relative">
-        <SectionHeading index="16" label="Get in touch" lines={contactSection.headline} gradient />
+        <div className="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center md:justify-between">
+          <div>
+            <SectionHeading index="16" label="Get in touch" lines={contactSection.headline} gradient />
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={inViewOnce}
-          transition={{ duration: 0.6, ease: easeOutExpo }}
-          className="mt-8 max-w-xl text-xl leading-relaxed text-[var(--color-muted)]"
-        >
-          {contactSection.supporting}
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={inViewOnce}
+              transition={{ duration: 0.6, ease: easeOutExpo }}
+              className="mt-8 max-w-xl text-xl leading-relaxed text-[var(--color-muted)]"
+            >
+              {contactSection.supporting}
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={inViewOnce}
+            transition={{ duration: 0.7, ease: easeOutExpo }}
+            className="shrink-0"
+          >
+            <AvatarSticker />
+          </motion.div>
+        </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {links.map((link, i) => {
