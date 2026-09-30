@@ -17,7 +17,6 @@ import {
   agents,
   guardrails,
   guardrailsTagline,
-  aiArchitecture,
 } from "@/data/aiSystem";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FlowDiagram } from "@/components/ui/FlowDiagram";
@@ -175,75 +174,7 @@ export function AISystem() {
             })}
           </div>
         </div>
-
-        {/* Full system architecture diagram */}
-        <AIArchitectureDiagram />
       </div>
     </section>
-  );
-}
-
-/**
- * Full architecture: linear intake -> parallel agents -> post-processing chain,
- * with MongoDB + SHA-256 cache shown as supporting infrastructure.
- */
-function AIArchitectureDiagram() {
-  return (
-    <div className="mt-24">
-      <p className="eyebrow mb-8">System architecture</p>
-      <div className="surface-card grid gap-8 p-6 md:p-10 lg:grid-cols-[minmax(0,1fr)_auto]">
-        <div className="flex flex-col gap-8">
-          {/* Linear intake */}
-          <FlowDiagram
-            nodes={aiArchitecture.linear.map((label, i) => ({
-              label,
-              emphasis: i === 0 ? "start" : "process",
-            }))}
-            orientation="vertical"
-          />
-
-          {/* Parallel agents row */}
-          <div>
-            <p className="mb-3 font-mono text-xs text-[var(--color-faint)]">
-              parallel agents
-            </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {aiArchitecture.agents.map((a) => (
-                <div
-                  key={a}
-                  className="rounded-lg border border-[var(--color-line-strong)] bg-[rgba(79,140,255,0.06)] px-4 py-3 text-center text-sm text-[var(--color-ink)]"
-                >
-                  {a}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Post-processing chain */}
-          <FlowDiagram
-            nodes={aiArchitecture.postAgents.map((label, i) => ({
-              label,
-              emphasis: i === aiArchitecture.postAgents.length - 1 ? "success" : "process",
-            }))}
-            orientation="vertical"
-          />
-        </div>
-
-        {/* Supporting infrastructure */}
-        <aside className="flex flex-row gap-4 lg:flex-col lg:border-l lg:border-[var(--color-line)] lg:pl-8">
-          <p className="hidden font-mono text-xs text-[var(--color-faint)] lg:block">
-            supporting infra
-          </p>
-          {aiArchitecture.supporting.map((s) => (
-            <div
-              key={s}
-              className="flex flex-1 items-center justify-center rounded-lg border border-dashed border-[var(--color-line-strong)] bg-[var(--color-bg)] px-4 py-6 text-center font-mono text-sm text-[var(--color-teal-soft)] lg:flex-none"
-            >
-              {s}
-            </div>
-          ))}
-        </aside>
-      </div>
-    </div>
   );
 }
