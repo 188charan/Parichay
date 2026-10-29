@@ -20,7 +20,7 @@ export function Nokia() {
       aria-label="Nokia Networks experience"
     >
       <div className="container-x">
-        <SectionHeading index="08" label="Before fintech" lines={nokia.headline} />
+        <SectionHeading index="05" label="Before fintech" lines={nokia.headline} />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
           {/* Left: role + stack + contributions */}

@@ -27,7 +27,7 @@ export function About() {
       aria-label="About"
     >
       <div className="container-x">
-        <SectionLabel index="15">About</SectionLabel>
+        <SectionLabel index="10">About</SectionLabel>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div>

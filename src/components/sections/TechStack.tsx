@@ -185,7 +185,7 @@ export function TechStack() {
       <AmbientNetwork nodeCount={20} seed={31} className="opacity-40" intensity={0.45} />
 
       <div className="container-x relative">
-        <SectionHeading index="12" label="Craft" lines={["THE STACK."]} />
+        <SectionHeading index="07" label="Craft" lines={["THE STACK."]} />
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}

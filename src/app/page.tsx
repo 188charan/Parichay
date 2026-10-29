@@ -1,23 +1,13 @@
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { Hero } from "@/components/sections/Hero";
 import { WhatIDo } from "@/components/sections/WhatIDo";
-import { SystemsOptimize } from "@/components/sections/SystemsOptimize";
 import { EngineeringJourney } from "@/components/sections/EngineeringJourney";
 import { SpenseIntro } from "@/components/sections/SpenseIntro";
-import { MigrationCaseStudy } from "@/components/sections/MigrationCaseStudy";
-import { IncidentResponse } from "@/components/sections/IncidentResponse";
-import { DatabaseOptimization } from "@/components/sections/DatabaseOptimization";
-import { PerformanceCaseStudy } from "@/components/sections/PerformanceCaseStudy";
-import { PartnerJourney } from "@/components/sections/PartnerJourney";
-import { EMICaseStudy } from "@/components/sections/EMICaseStudy";
-import { RBACPanel } from "@/components/sections/RBACPanel";
-import { BIDashboard } from "@/components/sections/BIDashboard";
 import { ProductionImpact } from "@/components/sections/ProductionImpact";
+import { SystemsOptimize } from "@/components/sections/SystemsOptimize";
 import { SystemEvolution } from "@/components/sections/SystemEvolution";
 import { Nokia } from "@/components/sections/Nokia";
-import { AISystem } from "@/components/sections/AISystem";
-import { AadhaarProject } from "@/components/sections/AadhaarProject";
-import { AnnamruthaProject } from "@/components/sections/AnnamruthaProject";
+import { ProjectsShowcase } from "@/components/sections/ProjectsShowcase";
 import { TechStack } from "@/components/sections/TechStack";
 import { DSA } from "@/components/sections/DSA";
 import { Philosophy } from "@/components/sections/Philosophy";
@@ -38,31 +28,25 @@ export default function Home() {
 
         {/* Level 3 — how I engineer */}
         <WhatIDo />
-        <SystemsOptimize />
         <EngineeringJourney />
 
-        {/* Level 4 — Spense production systems, one narrative */}
+        {/* Level 4 — Spense production systems. The index grid links out to a
+            dedicated case-study page per system, keeping the homepage tight. */}
         <SpenseIntro />
-        <MigrationCaseStudy />
-        <IncidentResponse />
-        <DatabaseOptimization />
-        <PerformanceCaseStudy />
-        <PartnerJourney />
-        <EMICaseStudy />
-        <RBACPanel />
-        <BIDashboard />
 
-        {/* Synthesis */}
+        {/* Synthesis — the production numbers at a glance */}
         <ProductionImpact />
 
-        {/* Signature: the optimization philosophy, cinematic */}
+        {/* The optimization thesis, then the cinematic philosophy */}
+        <SystemsOptimize />
         <SystemEvolution />
 
         {/* Supporting story */}
         <Nokia />
-        <AISystem />
-        <AadhaarProject />
-        <AnnamruthaProject />
+
+        {/* Projects — compact previews that open full project pages */}
+        <ProjectsShowcase />
+
         <TechStack />
         <DSA />
         <Philosophy />

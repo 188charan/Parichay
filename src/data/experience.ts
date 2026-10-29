@@ -37,7 +37,7 @@ export const journey: JourneyStop[] = [
   },
 ];
 
-/** The full delivery lifecycle Charan owns at Spense. */
+/** The full delivery lifecycle Charan owns at Spense (flat list). */
 export const deliveryLifecycle: string[] = [
   "BRD",
   "Feasibility",
@@ -49,6 +49,44 @@ export const deliveryLifecycle: string[] = [
   "UAT",
   "Production",
   "Post-production validation",
+];
+
+/**
+ * The same lifecycle grouped into the four phases Charan owns end-to-end.
+ * Drives the phased lifecycle board in the Spense intro.
+ */
+export interface DeliveryPhase {
+  id: string;
+  phase: string;
+  caption: string;
+  stages: string[];
+}
+
+export const deliveryPhases: DeliveryPhase[] = [
+  {
+    id: "discover",
+    phase: "Discover",
+    caption: "Understand the requirement",
+    stages: ["BRD", "Feasibility", "Architecture"],
+  },
+  {
+    id: "build",
+    phase: "Build",
+    caption: "Design and implement",
+    stages: ["Backend", "Frontend", "Database"],
+  },
+  {
+    id: "validate",
+    phase: "Validate",
+    caption: "Prove it works",
+    stages: ["QA", "UAT"],
+  },
+  {
+    id: "ship",
+    phase: "Ship",
+    caption: "Release and verify in production",
+    stages: ["Production", "Post-production validation"],
+  },
 ];
 
 export const spense = {

@@ -52,7 +52,7 @@ export function Contact() {
       <div className="container-x relative">
         <div className="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <SectionHeading index="16" label="Get in touch" lines={contactSection.headline} gradient />
+            <SectionHeading index="11" label="Get in touch" lines={contactSection.headline} gradient />
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}

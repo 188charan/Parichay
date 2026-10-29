@@ -16,21 +16,61 @@ export const whatIDoStatements: string[] = [
 ];
 
 /**
- * "Systems I optimize" — a From -> To transformation summary.
+ * "What I optimize" — concrete before -> after transformations, each tied to a
+ * real production outcome and a representative system. The icon/tone fields let
+ * the UI differentiate the cards instead of rendering five identical boxes.
  */
-export const systemsFromTo = {
-  from: [
-    "High-volume logs",
-    "Large JSON payloads",
-    "Manual monitoring",
-    "Hardcoded journeys",
-    "Slow queries",
-  ],
-  to: [
-    "Compressed payloads",
-    "Automated detection",
-    "Configuration-driven journeys",
-    "Optimized queries",
-    "Production observability",
-  ],
-};
+export interface Optimization {
+  from: string;
+  to: string;
+  /** Short real-world result shown as a metric chip. */
+  note: string;
+  /** Which system this maps to (shown as a quiet caption). */
+  domain: string;
+  /** Icon key resolved in the component. */
+  icon: "storage" | "observability" | "config" | "performance" | "analytics";
+  tone: "primary" | "teal";
+}
+
+export const optimizations: Optimization[] = [
+  {
+    from: "High-volume logs",
+    to: "Compressed payloads",
+    note: "~45% payload reduction",
+    domain: "Storage optimization",
+    icon: "storage",
+    tone: "teal",
+  },
+  {
+    from: "Manual monitoring",
+    to: "Automated detection",
+    note: "MTTD → near-zero",
+    domain: "Incident response",
+    icon: "observability",
+    tone: "primary",
+  },
+  {
+    from: "Hardcoded journeys",
+    to: "Configuration-driven journeys",
+    note: "40% faster onboarding",
+    domain: "Partner platform",
+    icon: "config",
+    tone: "primary",
+  },
+  {
+    from: "Slow queries",
+    to: "Optimized queries",
+    note: "30% lower latency",
+    domain: "Backend performance",
+    icon: "performance",
+    tone: "teal",
+  },
+  {
+    from: "Manual reporting",
+    to: "Live dashboards",
+    note: "Zero manual reports",
+    domain: "Business intelligence",
+    icon: "analytics",
+    tone: "primary",
+  },
+];

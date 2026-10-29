@@ -21,7 +21,7 @@ export function Philosophy() {
       <ConvergenceField />
 
       <div className="container-x relative">
-        <SectionLabel index="14">Principles</SectionLabel>
+        <SectionLabel index="09">Principles</SectionLabel>
 
         <ul className="mt-16 flex flex-col">
           {philosophy.map((statement, i) => (

@@ -28,7 +28,7 @@ export function DSA() {
       aria-label="Data structures and algorithms"
     >
       <div className="container-x">
-        <SectionHeading index="13" label="Problem solving" lines={dsa.headline} gradient />
+        <SectionHeading index="08" label="Problem solving" lines={dsa.headline} gradient />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,0.45fr)] lg:items-center">
           {/* Heatmap-inspired grid */}
